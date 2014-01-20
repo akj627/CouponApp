@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html ng-app="app">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="apple-mobile-web-app-title" content="Coupons" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+  <title>Coupons</title>
+  <script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <script data-require="angular.js@1.2.9" data-semver="1.2.9" src="http://code.angularjs.org/1.2.9/angular.js"></script>
+  <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+  <script defer="" src="libs/fastclick.js"></script>
+  <script defer="" src="js/script.js"></script>
+  <script src="js/angApp.js"></script>
+  <script src="js/controllers/couponController.js"></script>
+  <script src="js/services/couponService.js"></script>
+</head>
+
+<body class="ios7">
+  <!-- native | ios7 -->
+  <section id="view-home" class="active">
+    <header>
+      <button class="left" data-vin="view-about" data-sd="popin">
+        <div class="label">About</div>
+      </button>
+      <h1>My Shopping List</h1>
+    </header>
+    <div class="scrollWrap">
+      <div class="scroll">
+        <div class="content">
+          <ul class="arrowed" ng-controller="couponController">
+            <li data-vin="view-forms" data-sd="sl" ng-repeat="coupon in coupons">
+              <div class="innerLi">
+                <div class="big">{{coupon.retailer}}</div>
+                <div class="light">${{coupon.disc}} off of ${{coupon.minBuy}}+</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hidden" id="view-forms" ng-controller="couponDetailController">>
+    <header>
+      <button class="left arrow" data-vin="view-home" data-sd="sr">
+        <div class="label">My Shopping List</div>
+      </button>
+      <h1>Coupon Detail</h1>
+    </header>
+    <div class="scrollMask"></div>
+    <div class="scrollWrap">
+      <div class="scroll">
+        <div class="content">
+                <div class="big">{{currentCoupon.retailer}}</div>
+                <div class="light">${{currentCoupon.disc}} off of ${{currentCoupon.minBuy}}+</div>
+                <div class="light">{{currentCoupon.code}}</div>
+                <div class="light">{{currentCoupon.retailerType}}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hidden" id="view-done">
+    <header>
+      <h1>That's it!</h1>
+      <button class="right bold" data-vin="view-home" data-sd="popout">
+        <div class="label">Done</div>
+      </button>
+    </header>
+    <div class="scrollMask"></div>
+    <div class="scrollWrap">
+      <div class="scroll">
+        <div class="content">
+          <h2>Message sent!</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hidden" id="view-about">
+    <header>
+      <h1>About</h1>
+      <button class="right bold" data-vin="view-home" data-sd="popout">
+        <div class="label">Done</div>
+      </button>
+    </header>
+    <div class="scrollMask"></div>
+    <div class="scrollWrap">
+      <div class="scroll">
+        <div class="content">
+          <h2>My Super App</h2>
+          <p>Lorem Ipsum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hidden" id="view-tab2">
+    <header>
+      <h1>Tab 2</h1>
+    </header>
+    <div class="scrollMask"></div>
+    <div class="scrollWrap">
+      <div class="scroll">
+        <div class="content">
+          <h2>Some title</h2>
+          <p>Lorem Ipsum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="hidden" id="view-tab3">
+    <header>
+      <h1>Tab 3</h1>
+    </header>
+    <div class="scrollMask"></div>
+    <div class="scrollWrap">
+      <div class="scroll">
+        <div class="content">
+          <h2>Some title</h2>
+          <p>Lorem Ipsum.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav>
+    <button id="btn1" class="active" data-vin="view-home">
+      <div class="btn-icon" style="-webkit-mask-image: url(img/icons/user.svg);"></div>
+      <div class="label">Home</div>
+    </button>
+    <button id="btn2" data-vin="view-tab2">
+      <div class="btn-icon" style="-webkit-mask-image: url(img/icons/list-alt.svg);"></div>
+      <div class="label">Tab 2</div>
+    </button>
+    <button id="btn3" data-vin="view-tab3">
+      <div class="btn-icon" style="-webkit-mask-image: url(img/icons/group.svg);"></div>
+      <div class="label">Tab 3</div>
+    </button>
+  </nav>
+</body>
+
+</html>
