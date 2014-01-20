@@ -1,12 +1,11 @@
    app.factory('couponService', function() {
-      var obj = {
-      // current data
+      var retObj = {
       currentCoupon: {},
       coupons:[]
     };
 
      var getCoupons = function() {
-      obj.coupons = [{
+      retObj.coupons = [{
            retailer: 'StarBucks',
            disc: '20',
            retailerType: 'Coffehouse',
@@ -56,7 +55,6 @@
            code: 'THYRA50164',
            id: 7
          }];
-
-         return 
      };
+     return retObj;
    });
